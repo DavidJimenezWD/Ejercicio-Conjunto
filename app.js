@@ -64,12 +64,12 @@ app.put("/almacen/:seccion/:nombre", (req, res) => {
 
         // Si el articulo esta efectivamente en el almacen
         if ( listaNombresArticulos.includes(nuevoArticulo.nombre) ) {
-            almacen[seccion].push(nuevoArticulo);
-            res.send( { msg: "Articulo añadido"});
-        } else {
-            res.status(404).send("El articulo no existe");
+        //     almacen[seccion].push(nuevoArticulo);
+        //     res.send( { msg: "Articulo añadido"});
+        // } else {
+        //     res.status(404).send("El articulo no existe");
         
-        }
+        // }
    
     } else {
         res.status(404).send("No se ha podido encontrar");
