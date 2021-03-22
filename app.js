@@ -1,14 +1,12 @@
-// const almacen = require("./almacen");
+const almacen = require("./almacen");
 
 
 const express = require("express");
 const app = express();
 
+app.get("/", (req, res) => {
+    res.send(almacen);
+})
 
 
-console.log(almacen);
-
-
-
-
-servidor.listen(3000);
+app.listen(3000);
