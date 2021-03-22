@@ -1,0 +1,26 @@
+
+img{
+    width: 500px;
+}
+
+h4{
+    display: inline-block;
+}
+
+/* .div-buscar{ 
+  
+}
+
+.div-buscar > input{
+   
+} */
+
+.flex-container{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top:50px ;
+    text-align: center;
+
+
+}
