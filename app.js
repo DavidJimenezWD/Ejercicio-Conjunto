@@ -6,9 +6,5 @@ const app = express();
 
 
 
-console.log(almacen);
 
-
-
-
-servidor.listen(3000);
+app.listen(3000);
