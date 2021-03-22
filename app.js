@@ -1,18 +1,11 @@
 const almacen = require("./almacen");
-<<<<<<< HEAD
-=======
-
->>>>>>> 1c3eff295ec22984996bfda151547fd7d5ae6b3e
 const express = require("express");
 const app = express();
 
 app.use(express.static("public"));
 app.use(express.json());
 
-<<<<<<< HEAD
-=======
 // Rutas
->>>>>>> 1c3eff295ec22984996bfda151547fd7d5ae6b3e
 app.get("/almacen", (req, res) => {
     res.send(almacen);
 });
