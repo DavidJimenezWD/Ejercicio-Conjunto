@@ -10,5 +10,4 @@ app.get("/", (req, res) => {
     res.send(almacen);
 });
 
-
 app.listen(3000);
