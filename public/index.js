@@ -37,5 +37,5 @@ fetch("/almacen")
 document.getElementById("btn-buscar").addEventListener("click", () => {
   let tipo = document.getElementById("busqueda").value;
 
-  const arrayTipos = Object.keys(newObj);
+  
 });
