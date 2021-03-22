@@ -35,7 +35,11 @@ fetch("/almacen")
   });
 
 document.getElementById("btn-buscar").addEventListener("click", () => {
-  let tipo = document.getElementById("busqueda").value;
+  let nombreSeccion = document.getElementById("busqueda").value;
+
+  const seccion=Object.keys(newObj);
+
+
 
   
 });
