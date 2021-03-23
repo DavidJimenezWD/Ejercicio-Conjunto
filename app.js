@@ -28,7 +28,7 @@ app.get("/almacen/:seccion", (req, res) => {
 
 });
 
-app.post("/almacen/:seccion", (req, res) => {
+app.post("/almacen/anyadir/:seccion", (req, res) => {
 
     const seccion = req.params.seccion;
 
@@ -51,11 +51,13 @@ app.post("/almacen/:seccion", (req, res) => {
     }
 });
 
-app.put("/almacen/:seccion/:nombre", (req, res) => {
+app.put("/almacen/editar/:seccion/:nombre", (req, res) => {
 
     const seccion = req.params.seccion;
-    const nombre = req.params.nombre;
+    const nombreViejo = req.params.nombre.toUpperCase();
     const listaNombresArticulos = script.creaListaNombresArticulos(almacen[seccion]);
+    const nuevoArticulo = script.creaObjetoNuevoArticulo(req, almacen[seccion]);
+    
 
     // Si el paramatro seccion es una de las secciones del almacen
     if ( Object.keys(almacen).includes(seccion) ) {
@@ -63,13 +65,18 @@ app.put("/almacen/:seccion/:nombre", (req, res) => {
         const listaNombresArticulos = script.creaListaNombresArticulos(almacen[seccion]);
 
         // Si el articulo esta efectivamente en el almacen
-        if ( listaNombresArticulos.includes(nuevoArticulo.nombre) ) {
-        //     almacen[seccion].push(nuevoArticulo);
-        //     res.send( { msg: "Articulo añadido"});
-        // } else {
-        //     res.status(404).send("El articulo no existe");
-        
-        // }
+        if ( listaNombresArticulos.includes(nombreViejo) ) {
+            const IndexObjetoParaModificar = almacen[seccion].findIndex(obj => obj.nombre === nombreViejo);
+            
+            // Eliminar objeto para modificar y anadir el modificado
+            almacen[seccion].splice(IndexObjetoParaModificar, 1);
+            almacen[seccion].push(nuevoArticulo);
+
+            res.send( { msg: "Articulo modificado"});
+
+        } else {
+            res.status(404).send("El articulo no existe");
+        }
    
     } else {
         res.status(404).send("No se ha podido encontrar");
