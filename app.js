@@ -23,7 +23,7 @@ app.get("/almacen/:seccion", (req, res) => {
     if ( Object.keys(almacen).includes(seccion) ) {
         res.send(almacen[seccion]);
     } else {
-        res.status(404).send("No se ha podido encontrar");
+        res.status(404).send("La sección no existe");
     }
 
 });
@@ -47,7 +47,7 @@ app.post("/almacen/anyadir/:seccion", (req, res) => {
         }
    
     } else {
-        res.status(404).send("No se ha podido encontrar");
+        res.status(404).send("La sección no existe");
     }
 });
 
@@ -56,6 +56,7 @@ app.put("/almacen/editar/:seccion/:nombre", (req, res) => {
     const seccion = req.params.seccion;
     const nombreViejo = req.params.nombre.toUpperCase();
     const listaNombresArticulos = script.creaListaNombresArticulos(almacen[seccion]);
+
     const nuevoArticulo = script.creaObjetoNuevoArticulo(req, almacen[seccion]);
     
 
@@ -79,8 +80,37 @@ app.put("/almacen/editar/:seccion/:nombre", (req, res) => {
         }
    
     } else {
-        res.status(404).send("No se ha podido encontrar");
+        res.status(404).send("La sección no existe");
     }
 });
+
+app.delete("/almacen/eliminar/:seccion/:nombre", (req, res) => {
+
+    const seccion = req.params.seccion;
+    const nombreArticulo = req.params.nombre.toUpperCase();
+    
+    // Si el paramatro seccion es una de las secciones del almacen
+    if ( Object.keys(almacen).includes(seccion) ) {
+
+        const listaNombresArticulos = script.creaListaNombresArticulos(almacen[seccion]);
+
+        // Si el articulo esta efectivamente en el almacen
+        if ( listaNombresArticulos.includes(nombreArticulo) ) {
+            const IndexObjetoParaEliminar = almacen[seccion].findIndex(obj => obj.nombre === nombreArticulo);
+            
+            // Eliminar objeto para modificar y anadir el modificado
+            almacen[seccion].splice(IndexObjetoParaEliminar, 1);
+
+            res.send( { msg: "Articulo eliminado"});
+
+        } else {
+            res.status(404).send("El articulo no existe");
+        }
+   
+    } else {
+        res.status(404).send("La sección no existe");
+    }
+});
+
 
 app.listen(3000);
