@@ -45,4 +45,19 @@ document.getElementById("btn-buscar").addEventListener("click", () => {
     });
 });
 
-//
+// Aqui añadimos un articulo nuevo
+
+document.getElementById("btn-anyadir").addEventListener("click",()=>{
+  const nombre=document.getElementById("nombrePOST");
+  const desc=document.getElementById("descPOST");
+  const img=document.getElementById("imgPOST");
+  const precio=document.getElementById("precioPOST");
+  const tipo=document.getElementById("tipoPOST");
+
+  
+
+
+
+
+});
+
