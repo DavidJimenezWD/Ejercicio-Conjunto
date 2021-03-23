@@ -7,7 +7,8 @@ const app = express();
 
 
 app.use(express.static("public"));
-app.use(express.json());
+
+
 
 
 // Rutas
@@ -18,7 +19,7 @@ app.get("/almacen", (req, res) => {
 
 app.get("/almacen/:seccion", (req, res) => {
 
-    const seccion = req.params.seccion;
+    const seccion = req.params.seccion.toLowerCase();
 
     // Si el parametro es una de las secciones del almacen
     if ( Object.keys(almacen).includes(seccion) ) {
@@ -32,7 +33,7 @@ app.get("/almacen/:seccion", (req, res) => {
 
 app.post("/almacen/anyadir/:seccion", (req, res) => {
 
-    const seccion = req.params.seccion;
+    const seccion = req.params.seccion.toLowerCase();
 
     // Si el parametro es una de las secciones del almacen
     if ( Object.keys(almacen).includes(seccion) ) {
@@ -57,7 +58,7 @@ app.post("/almacen/anyadir/:seccion", (req, res) => {
 
 app.put("/almacen/editar/:seccion/:nombre", (req, res) => {
 
-    const seccion = req.params.seccion;
+    const seccion = req.params.seccion.toLowerCase();;
     const nombreViejo = req.params.nombre.toUpperCase();
 
     const nuevoArticulo = script.creaObjetoNuevoArticulo(req, almacen[seccion]);
@@ -90,7 +91,7 @@ app.put("/almacen/editar/:seccion/:nombre", (req, res) => {
 
 app.delete("/almacen/eliminar/:seccion/:nombre", (req, res) => {
 
-    const seccion = req.params.seccion;
+    const seccion = req.params.seccion.toLowerCase();;
     const nombreArticulo = req.params.nombre.toUpperCase();
     
     // Si el paramatro seccion es una de las secciones del almacen
