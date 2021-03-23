@@ -7,13 +7,19 @@ h4{
     display: inline-block;
 }
 
-/* .div-buscar{ 
-  
+span{
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+.div-buscar{ 
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
 }
 
 .div-buscar > input{
-   
-} */
+   width: 25vw;
+}
 
 .flex-container{
     display: flex;
@@ -23,4 +29,8 @@ h4{
     text-align: center;
 
 
+}
+
+.articulo{
+    padding: 60px;
 }
