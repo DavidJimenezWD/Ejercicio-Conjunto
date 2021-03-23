@@ -15,6 +15,7 @@ app.get("/almacen", (req, res) => {
     res.send(almacen);
 });
 
+
 app.get("/almacen/:seccion", (req, res) => {
 
     const seccion = req.params.seccion;
@@ -27,6 +28,7 @@ app.get("/almacen/:seccion", (req, res) => {
     }
 
 });
+
 
 app.post("/almacen/anyadir/:seccion", (req, res) => {
 
@@ -50,6 +52,7 @@ app.post("/almacen/anyadir/:seccion", (req, res) => {
         res.status(404).send("La sección no existe");
     }
 });
+
 
 app.put("/almacen/editar/:seccion/:nombre", (req, res) => {
 
@@ -83,6 +86,7 @@ app.put("/almacen/editar/:seccion/:nombre", (req, res) => {
         res.status(404).send("La sección no existe");
     }
 });
+
 
 app.delete("/almacen/eliminar/:seccion/:nombre", (req, res) => {
 
