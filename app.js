@@ -40,10 +40,11 @@ app.post("/almacen/anyadir/:seccion", (req, res) => {
         const nuevoArticulo = script.creaObjetoNuevoArticulo(req, almacen[seccion]);
         const listaNombresArticulos = script.creaListaNombresArticulos(almacen[seccion]);
 
-        // Si el objeto no esta en el almacen todavia
+        // Si el articulo no esta en el almacen todavia
         if ( !listaNombresArticulos.includes(nuevoArticulo.nombre) ) {
             almacen[seccion].push(nuevoArticulo);
             res.send( { msg: "Articulo añadido"});
+
         } else {
             res.status(422).send("El articulo existe ya");
         }
@@ -58,7 +59,6 @@ app.put("/almacen/editar/:seccion/:nombre", (req, res) => {
 
     const seccion = req.params.seccion;
     const nombreViejo = req.params.nombre.toUpperCase();
-    const listaNombresArticulos = script.creaListaNombresArticulos(almacen[seccion]);
 
     const nuevoArticulo = script.creaObjetoNuevoArticulo(req, almacen[seccion]);
     

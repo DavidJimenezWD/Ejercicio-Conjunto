@@ -28,12 +28,5 @@ function creaListaNombresArticulos(arr) {
     return listaNombresArticulos;    
 }
 
-
-function encuentraArticuloConNombre(nombre) {
-    for ( let seccion of almacen ) {
-        seccion.for
-    }
-}
-
 exports.creaObjetoNuevoArticulo = creaObjetoNuevoArticulo;
 exports.creaListaNombresArticulos = creaListaNombresArticulos;
