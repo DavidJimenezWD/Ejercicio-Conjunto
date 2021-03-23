@@ -62,18 +62,18 @@ app.put("/almacen/editar/:seccion/:nombre", (req, res) => {
 
     const nuevoArticulo = script.creaObjetoNuevoArticulo(req, almacen[seccion]);
     
-
-    // Si el paramatro seccion es una de las secciones del almacen
+    // Si el parametro seccion es una de las secciones del almacen
     if ( Object.keys(almacen).includes(seccion) ) {
 
         const listaNombresArticulos = script.creaListaNombresArticulos(almacen[seccion]);
 
         // Si el articulo esta efectivamente en el almacen
         if ( listaNombresArticulos.includes(nombreViejo) ) {
-            const IndexObjetoParaModificar = almacen[seccion].findIndex(obj => obj.nombre === nombreViejo);
             
             // Eliminar objeto para modificar y anadir el modificado
+            const IndexObjetoParaModificar = almacen[seccion].findIndex(obj => obj.nombre === nombreViejo);
             almacen[seccion].splice(IndexObjetoParaModificar, 1);
+
             almacen[seccion].push(nuevoArticulo);
 
             res.send( { msg: "Articulo modificado"});
@@ -100,9 +100,9 @@ app.delete("/almacen/eliminar/:seccion/:nombre", (req, res) => {
 
         // Si el articulo esta efectivamente en el almacen
         if ( listaNombresArticulos.includes(nombreArticulo) ) {
-            const IndexObjetoParaEliminar = almacen[seccion].findIndex(obj => obj.nombre === nombreArticulo);
             
             // Eliminar objeto para modificar y anadir el modificado
+            const IndexObjetoParaEliminar = almacen[seccion].findIndex(obj => obj.nombre === nombreArticulo);
             almacen[seccion].splice(IndexObjetoParaEliminar, 1);
 
             res.send( { msg: "Articulo eliminado"});
