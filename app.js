@@ -59,7 +59,7 @@ app.post("/almacen/anyadir/:seccion", (req, res) => {
 app.put("/almacen/editar/:seccion/:nombreOriginal", (req, res) => {
 
     const seccion = req.params.seccion;
-    const nombreViejo = req.params.nombreOriginal.toUpperCase();
+    const nombreViejo = req.params.nombreOriginal;
     const listaNombresArticulos = script.creaListaNombresArticulos(almacen[seccion]);
 
     const nuevoArticulo = script.creaObjetoNuevoArticulo(req, almacen[seccion]);
@@ -93,7 +93,7 @@ app.put("/almacen/editar/:seccion/:nombreOriginal", (req, res) => {
 app.delete("/almacen/eliminar/:seccion/:nombre", (req, res) => {
 
     const seccion = req.params.seccion.toLowerCase();;
-    const nombreArticulo = req.params.nombre.toUpperCase();
+    const nombreArticulo = req.params.nombre;
     
     // Si el paramatro seccion es una de las secciones del almacen
     if ( Object.keys(almacen).includes(seccion) ) {
