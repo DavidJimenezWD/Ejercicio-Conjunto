@@ -34,6 +34,7 @@ app.get("/almacen/:seccion", (req, res) => {
 app.post("/almacen/anyadir/:seccion", (req, res) => {
 
     const seccion = req.params.seccion;
+    console.log(seccion)
 
     // Si el parametro es una de las secciones del almacen
     if ( Object.keys(almacen).includes(seccion) ) {
