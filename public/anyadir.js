@@ -1,11 +1,26 @@
 // Aqui añadimos un articulo nuevo
 
+fetch("/almacen")
+  .then((res) => res.json())
+  .then((res) => {
+    const secciones = Object.keys(res);
+
+    for (let i = 0; i < secciones.length; i++) {
+      document.getElementById("seleccion").innerHTML += `
+            <option value="${secciones[i]}">${secciones[i]}</option>`;
+    }
+  });
+
+let seccion;
+const seccionesArray = () => {
+  seccion = document.getElementById("seleccion").value;
+};
+
 document.getElementById("btn-anyadir").addEventListener("click", () => {
   const nombre = document.getElementById("nombrePOST").value;
   const desc = document.getElementById("descPOST").value;
   const img = document.getElementById("imgPOST").value;
   const precio = document.getElementById("precioPOST").value;
-  const seccion = document.getElementById("tipoPOST").value;
 
   fetch(`/almacen/anyadir/${seccion}`, {
     method: "POST",

@@ -12,7 +12,9 @@
     <input type="text" placeholder="Descripcción" id="descPOST">
     <input type="text" placeholder="Imagen" id="imgPOST">
     <input type="text" placeholder="Precio" id="precioPOST">
-    <input type="text" placeholder="Tipo" id="tipoPOST">
+    <select id="seleccion" onchange="seccionesArray()">
+        <option>Elige una Sección</option>
+      </select>
     <button id="btn-anyadir">Añadir</button>
     <div id="div-articulos" class="flex-container"></div>
     <script src="./anyadir.js"></script>
