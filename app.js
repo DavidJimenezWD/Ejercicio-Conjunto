@@ -19,7 +19,7 @@ app.get("/almacen", (req, res) => {
 
 app.get("/almacen/:seccion", (req, res) => {
 
-    const seccion = req.params.seccion.toLowerCase();
+    const seccion = req.params.seccion;
 
     // Si el parametro es una de las secciones del almacen
     if ( Object.keys(almacen).includes(seccion) ) {
@@ -33,7 +33,7 @@ app.get("/almacen/:seccion", (req, res) => {
 
 app.post("/almacen/anyadir/:seccion", (req, res) => {
 
-    const seccion = req.params.seccion.toLowerCase();
+    const seccion = req.params.seccion;
 
     // Si el parametro es una de las secciones del almacen
     if ( Object.keys(almacen).includes(seccion) ) {
@@ -92,7 +92,7 @@ app.put("/almacen/editar/:seccion/:nombreOriginal", (req, res) => {
 
 app.delete("/almacen/eliminar/:seccion/:nombre", (req, res) => {
 
-    const seccion = req.params.seccion.toLowerCase();;
+    const seccion = req.params.seccion;
     const nombreArticulo = req.params.nombre;
     
     // Si el paramatro seccion es una de las secciones del almacen
