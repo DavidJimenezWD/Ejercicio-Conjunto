@@ -10,8 +10,6 @@ app.use(express.static("public"));
 app.use(express.json());
 
 
-
-
 // Rutas
 app.get("/almacen", (req, res) => {
     res.send(almacen);
