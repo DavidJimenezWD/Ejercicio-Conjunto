@@ -24,7 +24,7 @@ let almacen = {
     ],
     mesas: [
       {
-        nombre: "LINNMON / ADILS",
+        nombre: "LINNMON ADILS",
         descripccion: "Mesa, negro-marrón/blanco120x60 cm",
         img:
           "https://www.ikea.com/es/es/images/products/linnmon-adils-mesa-negro-marron-blanco__0737174_PE740917_S5.JPG?f=xl",
@@ -38,7 +38,7 @@ let almacen = {
         precio: 40,
       },
       {
-        nombre: "LINNMON / ADILS",
+        nombre: "LINNMON ADILS",
         descripccion: "Mesa, blanco100x60 cm",
         img:
           "https://www.ikea.com/es/es/images/products/linnmon-adils-mesa-blanco__0737165_PE740925_S5.JPG?f=xl",
