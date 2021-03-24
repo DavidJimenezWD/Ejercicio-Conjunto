@@ -1,8 +1,4 @@
 //Muestra todos los articulos en la index
-
-mostrarTodo();
-
-function mostrarTodo(){
   fetch("/almacen")
   .then((res) => res.json())
   .then((res) => {
@@ -19,7 +15,6 @@ function mostrarTodo(){
       }
     }
   });
-}
 
 
 // Aqui realizamos la busqueda atraves del input
@@ -44,4 +39,3 @@ document.getElementById("btn-buscar").addEventListener("click", () => {
     });
 });
 
-module.exports=mostrarTodo;
