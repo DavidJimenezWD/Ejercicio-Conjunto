@@ -6,6 +6,7 @@ document.getElementById("btn-anyadir").addEventListener("click", () => {
   const img = document.getElementById("imgPOST").value;
   const precio = document.getElementById("precioPOST").value;
   const seccion = document.getElementById("tipoPOST").value;
+  console.log(nombre);
 console.log(seccion);
   fetch(`/almacen/anyadir/${seccion}`, {
     method: "POST",

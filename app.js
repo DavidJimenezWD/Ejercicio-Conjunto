@@ -58,14 +58,9 @@ app.post("/almacen/anyadir/:seccion", (req, res) => {
 
 app.put("/almacen/editar/:seccion/:nombreOriginal", (req, res) => {
 
-<<<<<<< HEAD
     const seccion = req.params.seccion;
     const nombreViejo = req.params.nombreOriginal.toUpperCase();
     const listaNombresArticulos = script.creaListaNombresArticulos(almacen[seccion]);
-=======
-    const seccion = req.params.seccion.toLowerCase();;
-    const nombreViejo = req.params.nombre.toUpperCase();
->>>>>>> 6754f38eb4b53dfc72f8a7d4b1dfe8fae8e8e0d9
 
     const nuevoArticulo = script.creaObjetoNuevoArticulo(req, almacen[seccion]);
     

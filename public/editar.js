@@ -21,7 +21,6 @@ document.getElementById("btn-put").addEventListener("click",()=>{
   const img = document.getElementById("imgPUT").value;
   const descripccion = document.getElementById("descPUT").value;
   const precio = document.getElementById("precioPUT").value;
-  console.log(nombreOriginal);
   fetch(`/almacen/editar/${seccion}/${nombreOriginal}`, {
     method: "PUT",
     headers: {
@@ -51,6 +50,7 @@ document.getElementById("btn-put").addEventListener("click",()=>{
         <img src="${res[arrays[i]][j].img}" alt="foto"/>
         <p><span>Descripcción: </span>${res[arrays[i]][j].descripccion}</p>
         <h3>Precio: ${res[arrays[i]][j].precio}</h3>
+        <button id="btn-delete">Eliminar</button>
         </div>`;
         }
       }
