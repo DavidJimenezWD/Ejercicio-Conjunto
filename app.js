@@ -7,6 +7,7 @@ const app = express();
 
 
 app.use(express.static("public"));
+app.use(express.json());
 
 
 
@@ -34,12 +35,12 @@ app.get("/almacen/:seccion", (req, res) => {
 app.post("/almacen/anyadir/:seccion", (req, res) => {
 
     const seccion = req.params.seccion;
-    console.log(seccion)
 
     // Si el parametro es una de las secciones del almacen
     if ( Object.keys(almacen).includes(seccion) ) {
 
         const nuevoArticulo = script.creaObjetoNuevoArticulo(req, almacen[seccion]);
+        
         const listaNombresArticulos = script.creaListaNombresArticulos(almacen[seccion]);
 
         // Si el articulo no esta en el almacen todavia
