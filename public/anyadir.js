@@ -6,19 +6,23 @@ document.getElementById("btn-anyadir").addEventListener("click", () => {
   const img = document.getElementById("imgPOST").value;
   const precio = document.getElementById("precioPOST").value;
   const seccion = document.getElementById("tipoPOST").value;
-  console.log(nombre);
-console.log(seccion);
+
   fetch(`/almacen/anyadir/${seccion}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ "nombre": nombre, "descripccion": desc, "img": img, "precio": precio }),
+    body: JSON.stringify({
+      nombre: nombre,
+      descripccion: desc,
+      img: img,
+      precio: precio,
+    }),
   })
     .then((res) => res.json())
-    .then((res) =>console.log(res));
+    .then((res) => console.log(res));
 
-    fetch("/almacen")
+  fetch("/almacen")
     .then((res) => res.json())
     .then((res) => {
       const arrays = Object.keys(res);
@@ -34,6 +38,4 @@ console.log(seccion);
         }
       }
     });
-
-
 });

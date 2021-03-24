@@ -1,23 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Editar Articulo</title>
-    <link rel="stylesheet" href="./style.css">
-</head>
-<body>
-    <input type="text" placeholder="Nombre Original" id="originalPUT">
-    <input type="text" placeholder="Nuevo Nombre" id="nuevoPUT">
-    <input type="text" placeholder="Imagen" id="imgPUT">
-    <input type="text" placeholder="Descripcción" id="descPUT">
-    <input type="text" placeholder="Precio" id="precioPUT">
-    <select id="seleccion" onchange="seccionesArray()">
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div id="div1">
+      <input type="text" placeholder="Nombre Original" id="originalPUT" />
+      <input type="text" placeholder="Nuevo Nombre" id="nuevoPUT" />
+      <input type="text" placeholder="Imagen" id="imgPUT" />
+      <input type="text" placeholder="Descripcción" id="descPUT" />
+      <input type="text" placeholder="Precio" id="precioPUT" />
+      <select id="seleccion" onchange="seccionesArray()">
         <option>Elige una Sección</option>
-    </select>
-    <button id="btn-put">Editar</button>
+      </select>
+      <button id="btn-put">Editar</button>
+    </div>
     <div id="div-articulos" class="flex-container"></div>
-    <script src="./editar.js"></script>  
-</body>
+    <script src="./editar.js"></script>
+  </body>
 </html>

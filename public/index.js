@@ -1,5 +1,5 @@
 //Muestra todos los articulos en la index
-  fetch("/almacen")
+fetch("/almacen")
   .then((res) => res.json())
   .then((res) => {
     const arrays = Object.keys(res);
@@ -15,7 +15,6 @@
       }
     }
   });
-
 
 // Aqui realizamos la busqueda atraves del input
 
@@ -38,4 +37,3 @@ document.getElementById("btn-buscar").addEventListener("click", () => {
       document.getElementById("div-articulos").innerHTML = "";
     });
 });
-

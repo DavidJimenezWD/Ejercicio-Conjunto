@@ -1,6 +1,27 @@
 fetch("/almacen")
   .then((res) => res.json())
   .then((res) => {
+    document.getElementById("div-articulos").innerHTML = "";
+    const arrays = Object.keys(res);
+    for (let i = 0; i < arrays.length; i++) {
+      for (let j = 0; j < res[arrays[i]].length; j++) {
+        document.getElementById("div-articulos").innerHTML += `
+        <div class="articulo">
+        <h2>${res[arrays[i]][j].nombre}</h2>
+        <img src="${res[arrays[i]][j].img}" alt="foto"/>
+        <p><span>Descripcción: </span>${res[arrays[i]][j].descripccion}</p>
+        <h3>Precio: ${res[arrays[i]][j].precio}</h3>
+        <button id="btn-delete" onclick="eliminar('${arrays[i]}','${
+          res[arrays[i]][j].nombre
+        }')">Eliminar</button>
+        </div>`;
+      }
+    }
+  });
+
+fetch("/almacen")
+  .then((res) => res.json())
+  .then((res) => {
     const secciones = Object.keys(res);
 
     for (let i = 0; i < secciones.length; i++) {
@@ -9,13 +30,12 @@ fetch("/almacen")
     }
   });
 
-
 let seccion;
 const seccionesArray = () => {
   seccion = document.getElementById("seleccion").value;
 };
 
-document.getElementById("btn-put").addEventListener("click",()=>{
+document.getElementById("btn-put").addEventListener("click", () => {
   const nombreOriginal = document.getElementById("originalPUT").value;
   const nombre = document.getElementById("nuevoPUT").value;
   const img = document.getElementById("imgPUT").value;
@@ -29,7 +49,7 @@ document.getElementById("btn-put").addEventListener("click",()=>{
     body: JSON.stringify({
       seccion: seccion,
       nombreOriginal: nombreOriginal,
-      nombre:nombre,
+      nombre: nombre,
       img: img,
       descripccion: descripccion,
       precio: precio,
@@ -38,9 +58,10 @@ document.getElementById("btn-put").addEventListener("click",()=>{
     .then((res) => res.json())
     .then((res) => console.log(res));
 
-    fetch("/almacen")
+  fetch("/almacen")
     .then((res) => res.json())
     .then((res) => {
+      document.getElementById("div-articulos").innerHTML = "";
       const arrays = Object.keys(res);
       for (let i = 0; i < arrays.length; i++) {
         for (let j = 0; j < res[arrays[i]].length; j++) {
@@ -50,53 +71,44 @@ document.getElementById("btn-put").addEventListener("click",()=>{
         <img src="${res[arrays[i]][j].img}" alt="foto"/>
         <p><span>Descripcción: </span>${res[arrays[i]][j].descripccion}</p>
         <h3>Precio: ${res[arrays[i]][j].precio}</h3>
-        <button id="btn-delete" onclick="eliminar('${arrays[i]}','${res[arrays[i]][j].nombre}')">Eliminar</button>
+        <button id="btn-delete" onclick="eliminar('${arrays[i]}','${
+            res[arrays[i]][j].nombre
+          }')">Eliminar</button>
         </div>`;
         }
       }
-
-      
-
     });
-   
 });
 
-
-
-const eliminar=(seccion,nombre)=>{
- 
-  fetch(`/almacen/eliminar/${seccion}/${nombre}`,{
-    method:"DELETE",
-    headers:{
-      "Content-Type":"application/json"
-    }
-
-  }).then(res=>res.json()).then(res=>{
-    console.log(res);
-    document.getElementById("div-articulos").innerHTML="";
-    fetch("/almacen")
+const eliminar = (seccion, nombre) => {
+  fetch(`/almacen/eliminar/${seccion}/${nombre}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
     .then((res) => res.json())
     .then((res) => {
-      const arrays = Object.keys(res);
-      for (let i = 0; i < arrays.length; i++) {
-        for (let j = 0; j < res[arrays[i]].length; j++) {
-          document.getElementById("div-articulos").innerHTML += `
+      console.log(res);
+      document.getElementById("div-articulos").innerHTML = "";
+      fetch("/almacen")
+        .then((res) => res.json())
+        .then((res) => {
+          const arrays = Object.keys(res);
+          for (let i = 0; i < arrays.length; i++) {
+            for (let j = 0; j < res[arrays[i]].length; j++) {
+              document.getElementById("div-articulos").innerHTML += `
         <div class="articulo">
         <h2>${res[arrays[i]][j].nombre}</h2>
         <img src="${res[arrays[i]][j].img}" alt="foto"/>
         <p><span>Descripcción: </span>${res[arrays[i]][j].descripccion}</p>
         <h3>Precio: ${res[arrays[i]][j].precio}</h3>
-        <button id="btn-delete" onclick="eliminar('${arrays[i]}','${res[arrays[i]][j].nombre}')">Eliminar</button>
+        <button id="btn-delete" onclick="eliminar('${arrays[i]}','${
+                res[arrays[i]][j].nombre
+              }')">Eliminar</button>
         </div>`;
-        }
-      }
-  
+            }
+          }
+        });
     });
-  
-  });
-
-  
-
-
-
-}
+};
