@@ -1,5 +1,6 @@
 const mostrarTodo=require("./index");
 
+
 // Aqui añadimos un articulo nuevo
 
 document.getElementById("btn-anyadir").addEventListener("click",()=>{
