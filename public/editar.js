@@ -80,6 +80,8 @@ document.getElementById("btn-put").addEventListener("click", () => {
     });
 });
 
+//Al editar un producto saldran los botones de eliminar en todos
+
 const eliminar = (seccion, nombre) => {
   fetch(`/almacen/eliminar/${seccion}/${nombre}`, {
     method: "DELETE",
